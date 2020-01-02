@@ -9,7 +9,7 @@
 int find_keyword(char **line)
 {
     int n = 0;
-    while (( (*line)[n]  != '\0') && ((*line)[n] != ' '))
+    while (( (*line)[n]  != '\0') && ((*line)[n] == ' '))
 	n++;
     return n;
 }
