@@ -1,11 +1,46 @@
 #include "monty.h"
 
+
 /**
- * valid_opcode - reads opcode and verifies if is valid.
+ * get_opcode - reads opcode and verifies if is valid.
  * @opcode: string with opcode to validate.
  *
  * Return: 1 if there is a valid opcode or 0 if not.
  */
+void (*get_opcode(char *opcode, unsigned int line_number, stack_s **stack))(stack_t **stack, unsigned int line_number)
+{
+	int i = 0;
+	instruction_t opcode_func[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{NULL, NULL}
+	};
+
+	while (opcode_func[i].opcode)
+	{
+
+		if (strcmp(opcode_func[i].opcode, opcode))
+			(*(opcode_func[i].f))(;
+		i++;
+	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
+	exit(EXIT_FAILURE);
+}
+
+
+
+
+/*
+ * valid_opcode - reads opcode and verifies if is valid.
+ * @opcode: string with opcode to validate.
+ *
+ * Return: 1 if there is a valid opcode or 0 if not.
+
 int valid_opcode(char *opcode)
 {
 	int i = 0;
@@ -17,6 +52,7 @@ int valid_opcode(char *opcode)
 			return (1);
 	return (0);
 }
+*/
 
 /**
  * token_opcode - reads line and tokenize for opcode an argumen if any.
@@ -55,7 +91,8 @@ int main(int argc, char *argv[])
 	char *line = NULL, **opcode = NULL;
 	size_t len = 0;
 	ssize_t nread = 0;
-	int line_number = 1;
+	unsigned int line_number = 1;
+	stack_s *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -73,15 +110,7 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
 		opcode = token_opcode(line);
-		if (valid_opcode(opcode[0]))
-		{
-			printf("<%s><%s>\n", opcode[0], opcode[1]);
-		}
-		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
-			exit(EXIT_FAILURE);
-		}
+		get_opcode(opcode[0], line_number, &stack)
 		line_number++;
 	}
 
