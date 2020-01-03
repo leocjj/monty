@@ -4,16 +4,17 @@
  * valid_opcode - reads opcode and verifies if is valid.
  * @opcode: string with opcode to validate.
  *
- * Return: pointer to array of pointers with opcode and arguments if any found.
+ * Return: 1 if there is a valid opcode or 0 if not.
  */
 int valid_opcode(char *opcode)
 {
 	int i = 0;
-	char *strs[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", NULL};
+	char *strs[] = {"push", "pall", "pint", "pop", "swap", "add", "nop",
+			NULL};
 
 	for (i = 0; strs[i] != NULL; i++)
 		if (strcmp(opcode, strs[i]) == 0)
-		return (1);
+			return (1);
 	return (0);
 }
 
@@ -34,7 +35,7 @@ char **token_opcode(char *line)
 
 	/**
 	 * Takes first token found as opcode and store it in result[0].
-	 * Takes second token (if any) as argument and store it in result[0].
+	 * Takes second token (if any) as argument and store it in result[1].
 	 */
 	result[0] = strtok(line, s);
 	result[1] = strtok(NULL, s);
