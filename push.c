@@ -5,15 +5,11 @@
  * @number: value to be pushed
  * Return: void
  */
-
-extern char **opcode;
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 
 	(void) line_number;
-
-	char **opcode;
 
 	if (head == NULL)
 		exit(EXIT_FAILURE);

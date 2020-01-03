@@ -1,6 +1,6 @@
 #include "monty.h"
 
-extern char **opcode;
+char** opcode = NULL;
 
 /**
  * main - Entry point
@@ -18,8 +18,6 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 1;
 	stack_t *stack = NULL;
 
-	char **opcode = NULL;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -36,7 +34,8 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
 		opcode = token_opcode(line);
-		get_opcode(&stack, line_number);
+		printf("<%s><%s>\n", opcode[0], opcode[1]);
+		printf("%d\n", (*get_opcode(&stack, line_number))(&stack, line_number));
 		line_number++;
 	}
 
@@ -55,6 +54,7 @@ int main(int argc, char *argv[])
 void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
+	(void) stack;
 	instruction_t opcode_func[] = {
 		{"push", push},
 		/*{"pall", pall},
@@ -66,16 +66,14 @@ void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, u
 		{NULL, NULL}
 	};
 
-	char **opcode;
-
 	while (opcode_func[i].opcode)
 	{
 		if (strcmp(opcode_func[i].opcode, opcode[0]) == 0)
-			(*(opcode_func[i].f))(stack, line_number);
+			return (opcode_func[i].f);
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
-	exit(EXIT_FAILURE);
+    fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
+    exit(EXIT_FAILURE);
 }
 
 /**
