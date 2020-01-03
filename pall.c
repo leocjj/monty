@@ -2,7 +2,8 @@
 
 /**
  * pall - pushes an element to the stack.
- * @number: value to be pushed
+ * @head: top of the stack
+ * @line_number: line number where a wrong command was found
  * Return: void
  */
 void pall(stack_t **head, unsigned int line_number)

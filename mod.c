@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * _div -  divides the second top element of the stack by the top element
+ * mod -  get the module of the second top element of the stack and top element
  * @head: top of the stack
  * @line_number: line number where a wrong command was found
  * Return: void
  */
-void _div(stack_t **head, unsigned int line_number)
+void mod(stack_t **head, unsigned int line_number)
 {
 	stack_t *current = *head;
 	int nnodes = 1; /*number of elements in stack*/
@@ -19,7 +19,7 @@ void _div(stack_t **head, unsigned int line_number)
 
 	if (nnodes + 1 <= 2)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -31,7 +31,7 @@ void _div(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	current->next->n = current->next->n / current->n; /*do the division*/
+	current->next->n = current->next->n % current->n; /*do the mod*/
 
 	free(current);
 	*head = current->next;
