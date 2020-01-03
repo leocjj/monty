@@ -1,6 +1,23 @@
 #include "monty.h"
 
 /**
+ * valid_opcode - reads opcode and verifies if is valid.
+ * @line: pointer to line with opcodes.
+ *
+ * Return: pointer to array of pointers with opcode and arguments if any found.
+ */
+int valid_opcode(char *opcode)
+{
+    int i = 0;
+	char *strs[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", NULL};
+
+    for (i = 0; strs[i] != NULL; i++)
+        if (strcmp(opcode, strs[i]) == 0)
+            return (1);
+    return (0);
+}
+
+/**
  * token_opcode - reads line and tokenize for opcode an argumen if any.
  * @line: pointer to line with opcodes.
  *
@@ -10,7 +27,6 @@ char **token_opcode(char *line)
 {
 	const char s[7] = " \t\r\n\v\f";
 	char **result;
-
 	result = malloc(2 * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
@@ -21,8 +37,7 @@ char **token_opcode(char *line)
 	 */
 	result[0] = strtok(line, s);
 	result[1] = strtok(NULL, s);
-
-	return (result);
+    return (result);
 }
 
 /**
@@ -38,6 +53,7 @@ int main(int argc, char *argv[])
 	char *line = NULL, **opcode = NULL;
 	size_t len = 0;
 	ssize_t nread = 0;
+	int line_number = 1;
 
 	if (argc != 2)
 	{
@@ -55,7 +71,16 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
 		opcode = token_opcode(line);
-		printf("<%s><%s>\n", opcode[0], opcode[1]);
+		if(valid_opcode(opcode[0]))
+		{
+            printf("<%s><%s>\n", opcode[0], opcode[1]);
+		}
+		else
+		{
+            fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
+            exit(EXIT_FAILURE);
+        }
+        line_number++;
 	}
 
 	free(line);
