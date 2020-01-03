@@ -58,11 +58,11 @@ void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, u
 	instruction_t opcode_func[] = {
 		{"push", push},
 		{"pall", pall},
-		/*{"pint", pint},
+		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop},*/
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
