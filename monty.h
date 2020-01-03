@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -40,6 +40,7 @@ extern char** opcode;
 void push(stack_t **stack, unsigned int line_number);
 char **token_opcode(char *line);
 void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number);
+void pall(stack_t **head, unsigned int line_number);
 
 
 #endif /*_MONTY_H_ */

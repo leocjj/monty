@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	{
 		opcode = token_opcode(line);
 		printf("<%s><%s>\n", opcode[0], opcode[1]);
-		printf("%d\n", (*get_opcode(&stack, line_number))(&stack, line_number));
+		(*get_opcode(&stack, line_number))(&stack, line_number);
 		line_number++;
 	}
 
@@ -57,8 +57,8 @@ void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, u
 	(void) stack;
 	instruction_t opcode_func[] = {
 		{"push", push},
-		/*{"pall", pall},
-		{"pint", pint},
+		{"pall", pall},
+		/*{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},

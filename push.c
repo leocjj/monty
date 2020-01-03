@@ -8,8 +8,21 @@
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
+	size_t len = 0, i = 0;
 
-	(void) line_number;
+	if (opcode[1] == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	len = strlen(opcode[1]);
+	for (i = 0; i < len; i++)
+		if (!isdigit(opcode[1][i]))
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 
 	if (head == NULL)
 		exit(EXIT_FAILURE);
