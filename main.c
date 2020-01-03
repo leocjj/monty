@@ -1,5 +1,50 @@
 #include "monty.h"
 
+extern char **opcode;
+
+/**
+ * main - Entry point
+ * @argc: number of arguments passed as parameter to main program.
+ * @argv: array of strings with the parameters passed to main program
+ *
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on any failure.
+ */
+int main(int argc, char *argv[])
+{
+	FILE *stream = NULL;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t nread = 0;
+	unsigned int line_number = 1;
+	stack_t *stack = NULL;
+
+	char **opcode = NULL;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	stream = fopen(argv[1], "r");
+	if (stream == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+
+	while ((nread = getline(&line, &len, stream)) != -1)
+	{
+		opcode = token_opcode(line);
+		get_opcode(&stack, line_number);
+		line_number++;
+	}
+
+	free(line);
+	free(opcode);
+	fclose(stream);
+	exit(EXIT_SUCCESS);
+}
 
 /**
  * get_opcode - reads opcode and verifies if is valid.
@@ -7,23 +52,25 @@
  *
  * Return: 1 if there is a valid opcode or 0 if not.
  */
-void (*get_opcode(stack_s **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
+void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t opcode_func[] = {
 		{"push", push},
-		{"pall", pall},
+		/*{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop},
+		{"nop", nop},*/
 		{NULL, NULL}
 	};
 
+	char **opcode;
+
 	while (opcode_func[i].opcode)
 	{
-		if (strcmp(opcode_func[i].opcode, opcode) == 0)
+		if (strcmp(opcode_func[i].opcode, opcode[0]) == 0)
 			(*(opcode_func[i].f))(stack, line_number);
 		i++;
 	}
@@ -53,48 +100,4 @@ char **token_opcode(char *line)
 	result[0] = strtok(line, s);
 	result[1] = strtok(NULL, s);
 	return (result);
-}
-
-/**
- * main - Entry point
- * @argc: number of arguments passed as parameter to main program.
- * @argv: array of strings with the parameters passed to main program
- *
- * Return: EXIT_SUCCESS on success, EXIT_FAILURE on any failure.
- */
-int main(int argc, char *argv[])
-{
-	FILE *stream = NULL;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t nread = 0;
-	unsigned int line_number = 1;
-	stack_s *stack = NULL;
-
-	**opcode = NULL;
-
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
-	stream = fopen(argv[1], "r");
-	if (stream == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-
-	while ((nread = getline(&line, &len, stream)) != -1)
-	{
-		opcode = token_opcode(line);
-		get_opcode(opcode[0], line_number, &stack)
-		line_number++;
-	}
-
-	free(line);
-	free(opcode);
-	fclose(stream);
-	exit(EXIT_SUCCESS);
 }

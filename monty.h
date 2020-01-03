@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern char **opcode;
-void push(stack_t **stack, unsigned int line_number);
-char **token_opcode(char *line);
-void (*get_opcode(stack_s **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,6 +35,11 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+extern char **opcode;
+void push(stack_t **stack, unsigned int line_number);
+char **token_opcode(char *line);
+void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number);
 
 
 #endif /*_MONTY_H_ */
