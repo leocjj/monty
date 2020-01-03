@@ -7,7 +7,7 @@
  *
  * Return: 1 if there is a valid opcode or 0 if not.
  */
-void (*get_opcode(char *opcode, unsigned int line_number, stack_s **stack))(stack_t **stack, unsigned int line_number)
+void (*get_opcode(stack_s **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t opcode_func[] = {
@@ -23,36 +23,13 @@ void (*get_opcode(char *opcode, unsigned int line_number, stack_s **stack))(stac
 
 	while (opcode_func[i].opcode)
 	{
-
-		if (strcmp(opcode_func[i].opcode, opcode))
-			(*(opcode_func[i].f))(;
+		if (strcmp(opcode_func[i].opcode, opcode) == 0)
+			(*(opcode_func[i].f))(stack, line_number);
 		i++;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
 	exit(EXIT_FAILURE);
 }
-
-
-
-
-/*
- * valid_opcode - reads opcode and verifies if is valid.
- * @opcode: string with opcode to validate.
- *
- * Return: 1 if there is a valid opcode or 0 if not.
-
-int valid_opcode(char *opcode)
-{
-	int i = 0;
-	char *strs[] = {"push", "pall", "pint", "pop", "swap", "add", "nop",
-			NULL};
-
-	for (i = 0; strs[i] != NULL; i++)
-		if (strcmp(opcode, strs[i]) == 0)
-			return (1);
-	return (0);
-}
-*/
 
 /**
  * token_opcode - reads line and tokenize for opcode an argumen if any.
@@ -88,11 +65,13 @@ char **token_opcode(char *line)
 int main(int argc, char *argv[])
 {
 	FILE *stream = NULL;
-	char *line = NULL, **opcode = NULL;
+	char *line = NULL;
 	size_t len = 0;
 	ssize_t nread = 0;
 	unsigned int line_number = 1;
 	stack_s *stack = NULL;
+
+	**opcode = NULL;
 
 	if (argc != 2)
 	{
