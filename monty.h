@@ -5,9 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern stack_s *head = NULL;
 void push(int number);
-
+int valid_opcode(char *opcode);
+char **token_opcode(char *line);
+void (*get_opcode(char *opcode, unsigned int line_number, stack_s **stack))(stack_t **stack, unsigned int line_number);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
