@@ -10,7 +10,6 @@ void sub(stack_t **head, unsigned int line_number)
 {
 	stack_t *current = *head;
 	int nnodes = 1; /*number of elements in stack*/
-	(void) line_number;
 
 	while (current->next != NULL)
 	{
