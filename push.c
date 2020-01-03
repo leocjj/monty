@@ -6,9 +6,14 @@
  * Return: void
  */
 
-void push(int number)
+void push(stack_t **head, unsigned int line_number)
 {
-	stack_s *new_node, *current;
+	stack_s *new_node = NULL;
+
+	(void) line_number;
+
+	if (head == NULL)
+		exit(EXIT_FAILURE);
 
 	new_node = malloc(sizeof(stack_s));
 	if (new_node = NULL)
@@ -17,18 +22,16 @@ void push(int number)
 		exit(EXIT_FAILURE);
 	}
 
-	new->n = number;
+	new_node->n = number;
 	new_node->prev = NULL;
 	new_node->next = NULL;
 
 	if (*head == NULL)
-	{
 		*head = new_node;
-		return (new_node);
+	else
+	{
+		new_node->next = *head;
+		(*head)->prev = new_node;
+		*head = new_node;
 	}
-
-	new_node->next = current;
-	current->prev = new_node;
-	*head = new_node;
-
 }
