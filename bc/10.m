@@ -4,4 +4,12 @@ push 3
 pall
 swap
 pall
+add
+pall
+add
+pall
+add
+pall
+add
+pall
 
