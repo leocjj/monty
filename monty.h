@@ -36,7 +36,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char** opcode;
+extern char **opcode;
 void push(stack_t **stack, unsigned int line_number);
 char **token_opcode(char *line);
 void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number);

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char** opcode = NULL;
+char **opcode = NULL;
 
 /**
  * main - Entry point
@@ -47,11 +47,13 @@ int main(int argc, char *argv[])
 
 /**
  * get_opcode - reads opcode and verifies if is valid.
- * @opcode: string with opcode to validate.
+ * @stack: double pointer to header (top) of the stack.
+ * @line_number: conter for line number of the file.
  *
- * Return: 1 if there is a valid opcode or 0 if not.
+ * Return: void.
  */
-void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
+void (*get_opcode(stack_t **stack, unsigned int line_number))
+(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	(void) stack;
@@ -72,8 +74,8 @@ void (*get_opcode(stack_t **stack, unsigned int line_number))(stack_t **stack, u
 			return (opcode_func[i].f);
 		i++;
 	}
-    fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
-    exit(EXIT_FAILURE);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode[0]);
+	exit(EXIT_FAILURE);
 }
 
 /**

@@ -2,9 +2,10 @@
 
 /**
  * _div -  divides the second top element of the stack by the top element
- * @head: top of the stack
- * @line_number: line number where a wrong command was found
- * Return: void
+ * @head: double pointer to header (top) of the stack.
+ * @line_number: conter for line number of the file.
+ *
+ * Return: void.
  */
 void _div(stack_t **head, unsigned int line_number)
 {
