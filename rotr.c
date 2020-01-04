@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * _add - adds the top two elements of the stack.
+ * _rotr - rotates the stack to the bottom.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void _add(stack_t **head, unsigned int line_number)
+void _rotr(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;

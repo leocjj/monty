@@ -56,22 +56,26 @@ void (*get_opcode(stack_t **stack, unsigned int line_number)) (stack_t **stack,
 unsigned int line_number)
 {
 	int i = 0;
-	(void) stack;
 	instruction_t opcode_func[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"sub", sub},
-		{"mul", mul},
+		{"add", _add},
 		{"div", _div},
-		{"mod", mod},
-		{"nop", nop},
+		{"mod", _mod},
+		{"mul", _mul},
+		{"nop", _nop},
+		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"push", _push},
+		{"sub", _sub},
+		{"swap", _swap},
+		{"pchar", _pchar},
+		{"pstr", _pstr},
+		{"rotr", _rotr},
+		{"rotl", _rotl},
 		{NULL, NULL}
 	};
 
+	(void) stack;
 	while (opcode_func[i].opcode)
 	{
 		if (strcmp(opcode_func[i].opcode, opcode[0]) == 0)

@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * swap -  swaps the top two elements of the stack.
+ * _swap -  swaps the top two elements of the stack.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void swap(stack_t **head, unsigned int line_number)
+void _swap(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;

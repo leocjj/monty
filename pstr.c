@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * _add - adds the top two elements of the stack.
+ * _pstr - prints the string starting at the top of the stack.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void _add(stack_t **head, unsigned int line_number)
+void _pstr(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;

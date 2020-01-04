@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * push -  pushes an element to the stack.
+ * _push -  pushes an element to the stack.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void push(stack_t **head, unsigned int line_number)
+void _push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;

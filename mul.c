@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * mul -  multiply top element of the stack with the second top element
+ * _mul -  multiply top element of the stack with the second top element
  * @head: top of the stack
  * @line_number: line number where a wrong command was found
  * Return: void
  */
-void mul(stack_t **head, unsigned int line_number)
+void _mul(stack_t **head, unsigned int line_number)
 {
 	stack_t *current = *head;
 	int nnodes = 1; /*number of elements in stack*/

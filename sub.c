@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * sub -  subtracts top element of the stack from the second top element.
+ * _sub -  subtracts top element of the stack from the second top element.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void sub(stack_t **head, unsigned int line_number)
+void _sub(stack_t **head, unsigned int line_number)
 {
 	stack_t *current = *head;
 	int nnodes = 1; /*number of elements in stack*/

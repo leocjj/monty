@@ -37,14 +37,25 @@ typedef struct instruction_s
 } instruction_t;
 
 extern char **opcode;
-void push(stack_t **stack, unsigned int line_number);
-char **token_opcode(char *line);
-void pall(stack_t **head, unsigned int line_number);
-void pint(stack_t **head, unsigned int line_number);
-void pop(stack_t **head, unsigned int line_number);
-void swap(stack_t **head, unsigned int line_number);
-void add(stack_t **head, unsigned int line_number);
-void nop(stack_t **head, unsigned int line_number);
+
+void _add(stack_t **head, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **head, unsigned int line_number);
+void _pall(stack_t **head, unsigned int line_number);
+void _pint(stack_t **head, unsigned int line_number);
+void _pop(stack_t **head, unsigned int line_number);
+void _push(stack_t **stack, unsigned int line_number);
+void _sub(stack_t **stack, unsigned int line_number);
+void _swap(stack_t **head, unsigned int line_number);
+
+void _pchar(stack_t **stack, unsigned int line_number);
+void _pstr(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+
+
 
 /**
  * get_opcode - reads opcode and verifies if is valid.
@@ -55,6 +66,8 @@ void nop(stack_t **head, unsigned int line_number);
  */
 void (*get_opcode(stack_t **stack, unsigned int line_number)) (stack_t **stack,
 unsigned int line_number);
+
+char **token_opcode(char *line);
 
 
 #endif /*_MONTY_H_ */

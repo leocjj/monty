@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * nop - The opcode nop doesn’t do anything.
+ * _nop - The opcode nop doesn’t do anything.
  * @head: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void nop(stack_t **head, unsigned int line_number)
+void _nop(stack_t **head, unsigned int line_number)
 {
 	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;
