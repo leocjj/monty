@@ -16,4 +16,7 @@ nop
   nop pall
 push 4
 pall 5
-
+push -0
+push -1
+  push   -2
+pall

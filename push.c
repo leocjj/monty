@@ -25,7 +25,7 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	len = strlen(argument);
 	for (i = 0; i < len; i++)
-		if (!isdigit(argument[i]))
+		if (!isdigit(argument[i]) && argument[0] != '-')
 		{
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			free_stack_t(*stack);
@@ -43,7 +43,6 @@ void _push(stack_t **stack, unsigned int line_number)
  *
  * Return: void.
  */
-
 void add_node(stack_t **stack, int argument)
 {
 	stack_t *new_node = NULL;
