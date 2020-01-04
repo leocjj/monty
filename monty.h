@@ -44,7 +44,7 @@ void _mod(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **head, unsigned int line_number);
 void _pall(stack_t **head, unsigned int line_number);
-void _pint(stack_t **head, unsigned int line_number);
+void _pint(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **head, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
@@ -68,6 +68,8 @@ void (*get_opcode(stack_t **stack, unsigned int line_number)) (stack_t **stack,
 unsigned int line_number);
 
 char **token_opcode(char *line);
+
+void free_stack_t(stack_t *head);
 
 
 #endif /*_MONTY_H_ */

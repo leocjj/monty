@@ -2,6 +2,24 @@
 
 char **opcode = NULL;
 
+void CleanupFunction(void) __attribute__ ((destructor));
+
+/*
+ * CleanupFunction - Exit point
+ *
+ * Return: void.
+ **/
+void CleanupFunction(void)
+{
+	/*int i = 0;
+	while (opcode[i] != NULL && strcmp(opcode[i],""))
+	{
+			free(opcode[i]);
+			i++;
+	}
+	free(opcode);*/
+}
+
 /**
  * main - Entry point
  * @argc: number of arguments passed as parameter to main program.
@@ -34,13 +52,14 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&line, &len, stream)) != -1)
 	{
 		opcode = token_opcode(line);
-		printf("<%s><%s>\n", opcode[0], opcode[1]);
 		(*get_opcode(&stack, line_number))(&stack, line_number);
+
+		free(opcode);
 		line_number++;
 	}
 
-	free(line);
-	free(opcode);
+	free_stack_t(stack);
+	stack = NULL;
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
@@ -108,4 +127,22 @@ char **token_opcode(char *line)
 	result[0] = strtok(line, s);
 	result[1] = strtok(NULL, s);
 	return (result);
+}
+
+/**
+ * free_stack_t - function that free a list of type dlistint_t
+ * @head: pointer to a list type stack_t
+ *
+ * Return: void.
+ */
+void free_stack_t(stack_t *head)
+{
+	stack_t *temp;
+
+	while (head != NULL)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
 }
