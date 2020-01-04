@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 
 	free_stack_t(stack);
 	stack = NULL;
+	free(line);
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
