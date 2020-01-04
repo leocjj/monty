@@ -2,50 +2,29 @@
 
 /**
  * _swap -  swaps the top two elements of the stack.
- * @head: double pointer to header (top) of the stack.
+ * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void _swap(stack_t **head, unsigned int line_number)
+void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = NULL;
-	size_t len = 0, i = 0;
+	stack_t *temp;
 
-	if (opcode[1] == NULL)
+	if (!stack || !*stack || !((*stack)->next))
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_stack_t(*stack);
+
 		exit(EXIT_FAILURE);
 	}
 
-	len = strlen(opcode[1]);
-	for (i = 0; i < len; i++)
-		if (!isdigit(opcode[1][i]))
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-
-	if (head == NULL)
-		exit(EXIT_FAILURE);
-
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	new_node->n = atoi(opcode[1]);
-	new_node->prev = NULL;
-	new_node->next = NULL;
-
-	if (*head == NULL)
-		*head = new_node;
-	else
-	{
-		new_node->next = *head;
-		(*head)->prev = new_node;
-		*head = new_node;
-	}
+	temp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	if ((*stack)->next)
+		((*stack)->next)->prev = temp;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
+	temp->prev = *stack;
 }
