@@ -1,6 +1,11 @@
-push 1
-push 2
-push 3
+#pchar
+push 36
 pall
-add
+pchar
+push 127
 pall
+pchar
+push 10
+pall
+pchar
+
