@@ -52,8 +52,8 @@ int main(int argc, char *argv[])
  *
  * Return: void.
  */
-void (*get_opcode(stack_t **stack, unsigned int line_number))\
-(stack_t **stack, unsigned int line_number)
+void (*get_opcode(stack_t **stack, unsigned int line_number)) (stack_t **stack,
+unsigned int line_number)
 {
 	int i = 0;
 	(void) stack;
