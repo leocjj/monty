@@ -64,6 +64,10 @@ unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"sub", sub},
+		{"mul", mul},
+		{"div", _div},
+		{"mod", mod},
 		{"nop", nop},
 		{NULL, NULL}
 	};
