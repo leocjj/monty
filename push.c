@@ -33,13 +33,13 @@ void _push(stack_t **stack, unsigned int line_number)
 			exit(EXIT_FAILURE);
 		}
 
-	add_node(stack, argument);
+	add_node(stack, atoi(argument));
 }
 
 /**
- * _push -  pushes an element to the stack.
+ * add_node -  pushes an element to the stack.
  * @stack: double pointer to header (top) of the stack.
- * @line_number: counter for line number of the file.
+ * @argument: integer push.
  *
  * Return: void.
  */
@@ -57,7 +57,7 @@ void add_node(stack_t **stack, int argument)
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = atoi(argument);
+	new_node->n = argument;
 	new_node->prev = NULL;
 	new_node->next = NULL;
 
