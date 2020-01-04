@@ -33,7 +33,7 @@ void _mul(stack_t **head, unsigned int line_number)
 
 	current = *head; /*current equals to head to make substraction*/
 
-	current->next->n = current->next->n * current->n; /*do the substraction*/
+	current->next->n = current->next->n * current->n; /*do the mul*/
 
 	*head = current->next;
 	free(current);
