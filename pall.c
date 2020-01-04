@@ -7,12 +7,12 @@
  *
  * Return: void.
  */
-void _pall(stack_t **head, unsigned int line_number)
+void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current;
 
 	(void) line_number;
-	current = *head;
+	current = *stack;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);

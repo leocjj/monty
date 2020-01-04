@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
+#include <unistd.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,24 +38,22 @@ typedef struct instruction_s
 
 extern char **opcode;
 
-void _add(stack_t **head, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **head, unsigned int line_number);
-void _pall(stack_t **head, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **head, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **head, unsigned int line_number);
+void _swap(stack_t **stack, unsigned int line_number);
 
 void _pchar(stack_t **stack, unsigned int line_number);
 void _pstr(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
-
-
 
 /**
  * get_opcode - reads opcode and verifies if is valid.
@@ -64,11 +62,8 @@ void _rotl(stack_t **stack, unsigned int line_number);
  *
  * Return: void.
  */
-void (*get_opcode(stack_t **stack, unsigned int line_number)) (stack_t **stack,
-unsigned int line_number);
-
+void get_opcode(stack_t **stack, unsigned int line_number, char *code);
 char **token_opcode(char *line);
-
 void free_stack_t(stack_t *head);
 
 
