@@ -20,7 +20,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	n = (*stack)->n;
-	if (n >= 0 && n <= 127)
+	if (n >= 32 && n <= 127)
 		printf("%c\n", n);
 	else
 	{
