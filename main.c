@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 /**
  * get_opcode - reads opcode and verifies if is valid.
  * @stack: double pointer to header (top) of the stack.
- * @line_number: conter for line number of the file.
+ * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
@@ -79,7 +79,7 @@ void (*get_opcode(stack_t **stack, unsigned int line_number))
 }
 
 /**
- * token_opcode - reads line and tokenize for opcode an argumen if any.
+ * token_opcode - reads line and get tokens for opcode and argument if any.
  * @line: pointer to line with opcodes.
  *
  * Return: pointer to array of pointers with opcode and arguments if any found.

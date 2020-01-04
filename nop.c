@@ -1,9 +1,11 @@
 #include "monty.h"
 
 /**
- * push - pushes an element to the stack.
- * @number: value to be pushed
- * Return: void
+ * nop - The opcode nop doesn’t do anything.
+ * @head: double pointer to header (top) of the stack.
+ * @line_number: counter for line number of the file.
+ *
+ * Return: void.
  */
 void nop(stack_t **head, unsigned int line_number)
 {

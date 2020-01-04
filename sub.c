@@ -1,10 +1,11 @@
 #include "monty.h"
 
 /**
- * sub -  subtracts top element of the stack from the second top element
- * @head: top of the stack
- * @line_number: line number where a wrong command was found
- * Return: void
+ * sub -  subtracts top element of the stack from the second top element.
+ * @head: double pointer to header (top) of the stack.
+ * @line_number: counter for line number of the file.
+ *
+ * Return: void.
  */
 void sub(stack_t **head, unsigned int line_number)
 {

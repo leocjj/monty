@@ -1,9 +1,11 @@
 #include "monty.h"
 
 /**
- * push - pushes an element to the stack.
- * @number: value to be pushed
- * Return: void
+ * push -  pushes an element to the stack.
+ * @head: double pointer to header (top) of the stack.
+ * @line_number: counter for line number of the file.
+ *
+ * Return: void.
  */
 void push(stack_t **head, unsigned int line_number)
 {
