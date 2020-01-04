@@ -2,14 +2,13 @@
 
 /**
  * _push -  pushes an element to the stack.
- * @head: double pointer to header (top) of the stack.
+ * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = NULL;
 	size_t len = 0, i = 0;
 	char arg[128] = "";
 	char *argument = arg;
@@ -20,6 +19,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		free_stack_t(*stack);
+
 		exit(EXIT_FAILURE);
 	}
 
@@ -29,14 +29,31 @@ void _push(stack_t **stack, unsigned int line_number)
 		{
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			free_stack_t(*stack);
+
 			exit(EXIT_FAILURE);
 		}
+
+	add_node(stack, argument);
+}
+
+/**
+ * _push -  pushes an element to the stack.
+ * @stack: double pointer to header (top) of the stack.
+ * @line_number: counter for line number of the file.
+ *
+ * Return: void.
+ */
+
+void add_node(stack_t **stack, int argument)
+{
+	stack_t *new_node = NULL;
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		free_stack_t(*stack);
+
 		exit(EXIT_FAILURE);
 	}
 

@@ -65,6 +65,7 @@ void _rotl(stack_t **stack, unsigned int line_number);
 void get_opcode(stack_t **stack, unsigned int line_number, char *code);
 char **token_opcode(char *line);
 void free_stack_t(stack_t *head);
+void add_node(stack_t **stack, int argument);
 
 
 #endif /*_MONTY_H_ */

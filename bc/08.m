@@ -10,4 +10,10 @@ push    2   2   33
 # pall
 push 3
 pall
+nop
+ nop
+#nop
+  nop pall
+push 4
+pall 5
 

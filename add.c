@@ -2,7 +2,7 @@
 
 /**
  * _add - adds the top two elements of the stack.
- * @head: double pointer to header (top) of the stack.
+ * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.

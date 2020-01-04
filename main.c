@@ -49,10 +49,11 @@ int main(int argc, char *argv[])
  * get_opcode - reads opcode and verifies if is valid.
  * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
+ * @code: opcode to excecute.
  *
  * Return: void.
  */
-void get_opcode(stack_t **stack, unsigned int line_number, char * code)
+void get_opcode(stack_t **stack, unsigned int line_number, char *code)
 {
 	int i = 0;
 	instruction_t opcode_func[] = {
@@ -90,33 +91,6 @@ void get_opcode(stack_t **stack, unsigned int line_number, char * code)
 	 */
 	exit(EXIT_FAILURE);
 }
-
-/*
- * token_opcode - reads line and get tokens for opcode and argument if any.
- * @line: pointer to line with opcodes.
- *
- * Return: pointer to array of pointers with opcode and arguments if any found.
- *
-char **token_opcode(char *line)
-{
-	const char s[7] = " \t\r\n\v\f";
-	char **result;
-
-	result = malloc(2 * sizeof(char *));
-	if (result == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	**
-	 * Takes first token found as opcode and store it in result[0].
-	 * Takes second token (if any) as argument and store it in result[1].
-	 *
-	result[0] = strtok(line, s);
-	result[1] = strtok(NULL, s);
-	return (result);
-}*/
 
 /**
  * free_stack_t - function that free a list of type dlistint_t
