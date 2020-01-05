@@ -1,77 +1,63 @@
-# Project 0x19.
-
-C - Stacks, Queues - LIFO, FIFO
-
-
-## Read or watch:
-
-    What is difference between Dynamic and Static library (Static and Dynamic linking): https://intranet.hbtn.io/rltoken/FrHmqtTW-frrOt0yf2blOw
-    create dynamic libraries on Linux: https://intranet.hbtn.io/rltoken/Zj0XtgNWUQyEYuABr47p8Q
-
-
+# 0x19. C - Stacks, Queues - LIFO, FIFO (Monty Bytecode Interpreter)
 
 ## Learning Objectives
 
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google.
+* What do LIFO and FIFO mean
+* What is a stack, and when to use it
+* What is a queue, and when to use it
+* What are the common implementations of stacks and queues
+* What are the most common use cases of stacks and queues
+* What is the proper way to use global variables
 
-    What is a dynamic library, how does it work, how to create one, and how to use it
-    What is the environment variable $LD_LIBRARY_PATH and how to use it
-    What are the differences between static and shared libraries
-    Basic usage nm, ldd, ldconfig
+## Requirements
 
+Compiled with Ubuntu 14.04 LTS with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
 
+## How to install
+```sh
+gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+```
 
-### Requirements
+## How to use
+Write ./monty <file_name>
+* <file_name> should contain one instruction per line
+* Each instruction in <file_name> should be an operator (see operators)
+* You can use '#' to write comments in <file_name>
+* Spaces and new lines will are ignored.
 
-C
+## How the program works
 
-    Allowed editors: vi, vim, emacs
-    All your files will be compiled on Ubuntu 14.04 LTS
-    Your programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
-    All your files should end with a new line
-    A README.md file, at the root of the folder of the project is mandatory
-    Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-    You are not allowed to use global variables
-    No more than 5 functions per file
-    You are not allowed to use the standard library. Any use of functions like printf, puts, etc… is forbidden
-    You are allowed to use _putchar
-    You don’t have to push _putchar.c, we will use our file. If you do it won’t be taken into account
-    In the following examples, the main.c files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own main.c files at compilation. Our main.c files might be different from the one shown in the examples
-    The prototypes of all your functions and the prototype of the function _putchar should be included in your header file called holberton.h
-    Don’t forget to push your header file
+| Function | Description | Usage |
+| ------ | ------ | ------ |
+| main | Prints error messages, call function who gets operator and free memory |
+| get_opcode | Reads opcode and verifies if it's valid |
+| free_stack_t | Frees a stack of type stack_t |
+| add | Adds the top two elements of the stack | add |
+| _div | Divides the second top element of the stack by the top element | div |
+| _mod | Get the module of the second top element of the stack and top element | mod |
+| _mul | Multiply top element of the stack with the second top element | mul |
+| _nop | nop doesn’t do anything | nop |
+| pall | Prints all elements in the stack | pall |
+| _pchar | Prints the char at the top of the stack, followed by a new line | pchar |
+| _pint | Prints the value at the top of the stack | pint |
+| pop | Removes the top elements of the stack | pop |
+| _mod | get the module of the second top element of the stack and top element | mod |
+| _rotl | rotates the stack to the top | rotl |
+| _rotr | rotates the stack to the bottom | rotr |
+| _sub | subtracts top element of the stack from the second top element | sub |
+| _swap | swaps the top two elements of the stack | swap |
 
-Bash
+### Other files and folders
+* monty.h - doubly linked list representation of a stack (or queue), opcode and its function and prototypes of all functions of the program.
+* bc - test cases.
+* bf - Other tasks in brainfuck languaje.
 
-    Allowed editors: vi, vim, emacs
-    All your scripts will be tested on Ubuntu 14.04 LTS
-    All your files should end with a new line (why?)
-    The first line of all your files should be exactly #!/bin/bash
-    A README.md file, at the root of the folder of the project, describing what each script is doing
-    All your files must be executable
+##The Monty language
+Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
+## Authors
 
-### Tasks
+* Diego Betancourt Q. [Dfbq91](https://github.com/dfbq91)
+* Leonardo Calderon J - [LeoCJJ](https://github.com/leocjj)
 
- 0. A library is not a luxury but one of the necessities of life
- 1. Without libraries what have we? We have no past and no future mandatory
- 2. Either write something worth reading or do something worth writing mandatory
- 3. Let's call C functions from Python #advanced
- 4. Code injection: Win the Giga Millions! #advanced
-
-
-### Coding style tests
-
-[Holberton Betty style test.](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
-
-
-## Built With
-
-* Emacs editor.
-* gcc 4.8.4 compiler.
-* Linux vagrant-ubuntu-trusty-64 3.13.0-170-generic
-
-
-## Author
-
-* **Leonardo Calderon J.** - *Initial work* - [LeoCJJ](https://github.com/leocjj)
-01/02/2019
+01/04/2019
