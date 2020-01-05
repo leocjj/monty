@@ -2,50 +2,27 @@
 
 /**
  * _rotr - rotates the stack to the bottom.
- * @head: double pointer to header (top) of the stack.
+ * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.
  */
-void _rotr(stack_t **head, unsigned int line_number)
+void _rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = NULL;
-	size_t len = 0, i = 0;
+	stack_t *temp, *last;
 
-	if (opcode[1] == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	(void) line_number;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
 
-	len = strlen(opcode[1]);
-	for (i = 0; i < len; i++)
-		if (!isdigit(opcode[1][i]))
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
+	last = *stack;
+	while (last->next != NULL)
+		last = last->next;
 
-	if (head == NULL)
-		exit(EXIT_FAILURE);
-
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	new_node->n = atoi(opcode[1]);
-	new_node->prev = NULL;
-	new_node->next = NULL;
-
-	if (*head == NULL)
-		*head = new_node;
-	else
-	{
-		new_node->next = *head;
-		(*head)->prev = new_node;
-		*head = new_node;
-	}
+	temp = *stack;
+	*stack = last;
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
+	(*stack)->next = temp;
+	temp->prev = *stack;
 }
