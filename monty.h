@@ -36,7 +36,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char **opcode;
+extern char stack_queue;
 
 void _add(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
@@ -55,6 +55,9 @@ void _pstr(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 
+void _stack(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
+
 /**
  * get_opcode - reads opcode and verifies if is valid.
  * @stack: double pointer to header (top) of the stack.
@@ -66,6 +69,6 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *code);
 char **token_opcode(char *line);
 void free_stack_t(stack_t *head);
 void add_node(stack_t **stack, int argument);
-
+void add_node_queue(stack_t **stack, int argument);
 
 #endif /*_MONTY_H_ */

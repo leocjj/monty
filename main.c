@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char **opcode = NULL;
+char stack_queue = 's';
 
 /**
  * main - Entry point
@@ -73,6 +73,8 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *code)
 		{"pstr", _pstr},
 		{"rotr", _rotr},
 		{"rotl", _rotl},
+		{"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL}
 	};
 
