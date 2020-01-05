@@ -2,7 +2,7 @@
 
 /**
  * _pchar - prints the char at the top of the stack, followed by a new line.
- * @head: double pointer to header (top) of the stack.
+ * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
  *
  * Return: void.

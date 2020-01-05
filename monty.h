@@ -62,6 +62,7 @@ void _queue(stack_t **stack, unsigned int line_number);
  * get_opcode - reads opcode and verifies if is valid.
  * @stack: double pointer to header (top) of the stack.
  * @line_number: counter for line number of the file.
+ * @code: code to operate.
  *
  * Return: void.
  */
