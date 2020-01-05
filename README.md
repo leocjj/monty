@@ -15,7 +15,7 @@ Compiled with Ubuntu 14.04 LTS with gcc 4.8.4 using the flags -Wall -Werror -Wex
 
 ## How to install
 ```sh
-gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
 ```
 
 ## How to use
@@ -23,7 +23,7 @@ Write ./monty <file_name>
 * <file_name> should contain one instruction per line
 * Each instruction in <file_name> should be an operator (see operators)
 * You can use '#' to write comments in <file_name>
-* Spaces and new lines will are ignored.
+* Spaces and new lines are ignored.
 
 ## How the program works
 
@@ -52,7 +52,7 @@ Write ./monty <file_name>
 * bc - test cases.
 * bf - Other tasks in brainfuck languaje.
 
-##The Monty language
+# The Monty language
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
 ## Authors
